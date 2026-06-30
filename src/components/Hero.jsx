@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { CodeBracketIcon, ServerIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
 
 const Hero = () => {
   return (
@@ -13,9 +14,9 @@ const Hero = () => {
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-300 dark:bg-blue-900 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
       </div>
 
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        {/* Left Column - Text Content */}
-        <div className="text-center lg:text-left order-2 lg:order-1">
+      <div className="max-w-5xl mx-auto grid lg:grid-cols-5 gap-8 items-center relative z-10">
+        {/* Left Column - Text Content (spans 3 columns) */}
+        <div className="lg:col-span-3 text-center lg:text-left">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -114,59 +115,92 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Right Column - Avatar/Profile */}
+        {/* Right Column - Tech Stack Cards (spans 2 columns) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="order-1 lg:order-2 flex justify-center"
+          className="lg:col-span-2 order-1 lg:order-2"
         >
-          <div className="relative">
-            {/* Outer ring */}
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full blur-2xl opacity-30 animate-pulse"></div>
-            
-            {/* Profile circle */}
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 p-1 shadow-2xl">
-              <div className="w-full h-full rounded-full bg-white dark:bg-gray-800 flex items-center justify-center overflow-hidden">
-                {/* Placeholder avatar - replace with your image */}
-                <div className="w-full h-full bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 flex items-center justify-center">
-                  <span className="text-7xl sm:text-8xl font-bold text-gray-800 dark:text-white">
-                    M
-                  </span>
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              {
+                icon: CodeBracketIcon,
+                label: "Frontend",
+                tech: "React, Tailwind",
+                color: "from-blue-500 to-cyan-400",
+                bgColor: "bg-blue-50 dark:bg-blue-900/20",
+                iconColor: "text-blue-600 dark:text-blue-400"
+              },
+              {
+                icon: ServerIcon,
+                label: "Backend",
+                tech: "Spring Boot, Java",
+                color: "from-green-500 to-emerald-400",
+                bgColor: "bg-green-50 dark:bg-green-900/20",
+                iconColor: "text-green-600 dark:text-green-400"
+              },
+              {
+                icon: ShieldCheckIcon,
+                label: "Security",
+                tech: "JWT, Spring Security",
+                color: "from-purple-500 to-pink-400",
+                bgColor: "bg-purple-50 dark:bg-purple-900/20",
+                iconColor: "text-purple-600 dark:text-purple-400"
+              },
+              {
+                icon: CodeBracketIcon,
+                label: "Database",
+                tech: "PostgreSQL, Hibernate",
+                color: "from-yellow-500 to-orange-400",
+                bgColor: "bg-yellow-50 dark:bg-yellow-900/20",
+                iconColor: "text-yellow-600 dark:text-yellow-400"
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className={`${item.bgColor} rounded-2xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-lg transition-all duration-300 group`}
+              >
+                <div className={`w-12 h-12 rounded-xl ${item.bgColor} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                  <item.icon className={`w-6 h-6 ${item.iconColor}`} />
                 </div>
-              </div>
-            </div>
-
-            {/* Floating tech badges */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="absolute -top-4 -right-4 bg-white dark:bg-gray-800 px-3 py-1.5 rounded-full shadow-lg text-xs font-semibold text-purple-600 dark:text-purple-400 border border-gray-200 dark:border-gray-700"
-            >
-              Spring Boot
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-              className="absolute -bottom-2 -left-2 bg-white dark:bg-gray-800 px-3 py-1.5 rounded-full shadow-lg text-xs font-semibold text-blue-600 dark:text-blue-400 border border-gray-200 dark:border-gray-700"
-            >
-              React
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.5 }}
-              className="absolute top-1/2 -left-6 transform -translate-y-1/2 bg-white dark:bg-gray-800 px-3 py-1.5 rounded-full shadow-lg text-xs font-semibold text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700"
-            >
-              Java
-            </motion.div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  {item.label}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                  {item.tech}
+                </p>
+                <div className={`mt-3 w-12 h-0.5 bg-gradient-to-r ${item.color} rounded-full group-hover:w-20 transition-all duration-300`}></div>
+              </motion.div>
+            ))}
           </div>
+
+          {/* Coding Stats Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+            className="mt-4 text-center"
+          >
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-white dark:bg-gray-800 rounded-full border border-gray-200 dark:border-gray-700 shadow-sm">
+              <span className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                Available for work
+              </span>
+              <span className="w-px h-4 bg-gray-300 dark:bg-gray-600"></span>
+              <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                💻 3+ projects
+              </span>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
   );
 };
 
-export default Hero;  
+export default Hero;

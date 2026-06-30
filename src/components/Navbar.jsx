@@ -71,6 +71,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [navbarHeight, setNavbarHeight] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -90,6 +91,31 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Get navbar height for padding
+  useEffect(() => {
+    const updateNavbarHeight = () => {
+      const navbar = document.querySelector('nav');
+      if (navbar) {
+        setNavbarHeight(navbar.offsetHeight);
+      }
+    };
+    
+    updateNavbarHeight();
+    window.addEventListener('resize', updateNavbarHeight);
+    
+    return () => window.removeEventListener('resize', updateNavbarHeight);
+  }, []);
+
+  // Apply padding to sections to account for fixed navbar
+  useEffect(() => {
+    if (navbarHeight > 0) {
+      const sections = document.querySelectorAll('section[id]');
+      sections.forEach((section) => {
+        section.style.scrollMarginTop = `${navbarHeight + 20}px`;
+      });
+    }
+  }, [navbarHeight]);
+
   const handleHashLinkClick = (e, href, sectionId) => {
     e.preventDefault();
     
@@ -103,7 +129,13 @@ const Navbar = () => {
     if (location.pathname === path || (path === '/' && location.pathname === '/')) {
       const element = document.getElementById(hash);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 20;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
     } else {
       navigate(`${path}#${hash}`);
@@ -119,12 +151,18 @@ const Navbar = () => {
       
       setTimeout(() => {
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 20;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
           setActiveSection(hash);
         }
       }, 100);
     }
-  }, [location]);
+  }, [location, navbarHeight]);
 
   useEffect(() => {
     if (location.pathname === '/') {
@@ -176,7 +214,7 @@ const Navbar = () => {
           style={{ scaleX }}
         />
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+        <div className="max-w-6xl mx-auto px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4">
           <div className="flex justify-between items-center">
 
             {/* Logo */}
@@ -185,18 +223,18 @@ const Navbar = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 300 }}
               onClick={() => navigate('/')}
-              className="flex items-center gap-2 cursor-pointer group"
+              className="flex items-center gap-1.5 sm:gap-2 cursor-pointer group"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-purple-500/25 group-hover:scale-105 transition-transform duration-300">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold text-xs sm:text-sm shadow-lg shadow-purple-500/25 group-hover:scale-105 transition-transform duration-300">
                 M
               </div>
-              <span className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+              <span className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                 Mohankumaronly
               </span>
             </motion.div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center gap-1 lg:gap-2 text-sm font-medium">
+            <div className="hidden md:flex items-center gap-0.5 lg:gap-1 xl:gap-2 text-xs lg:text-sm font-medium">
               {links.map((link, i) => {
                 const isActive = link.id ? isHashLinkActive(link.id) : false;
                 
@@ -214,18 +252,19 @@ const Navbar = () => {
                       <a
                         href={link.href}
                         onClick={(e) => handleHashLinkClick(e, link.href, link.id)}
-                        className={`group relative px-3 lg:px-4 py-2 rounded-lg transition-all duration-300 flex items-center gap-2 ${
+                        className={`group relative px-2.5 lg:px-3 xl:px-4 py-1.5 lg:py-2 rounded-lg transition-all duration-300 flex items-center gap-1.5 lg:gap-2 ${
                           isActive
                             ? "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30"
                             : "text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50/50 dark:hover:bg-purple-900/20"
                         }`}
                       >
-                        <link.icon className="w-4 h-4" />
-                        <span>{link.name}</span>
+                        <link.icon className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
+                        <span className="hidden lg:inline">{link.name}</span>
+                        <span className="lg:hidden">{link.name.charAt(0)}</span>
                         {isActive && (
                           <motion.div
                             layoutId="activeIndicator"
-                            className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full"
+                            className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 lg:w-6 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full"
                             transition={{ type: "spring", stiffness: 500, damping: 30 }}
                           />
                         )}
@@ -235,15 +274,16 @@ const Navbar = () => {
                         to={link.route}
                         onClick={closeMenu}
                         className={({ isActive: isRouteActive }) =>
-                          `group relative px-3 lg:px-4 py-2 rounded-lg transition-all duration-300 flex items-center gap-2 ${
+                          `group relative px-2.5 lg:px-3 xl:px-4 py-1.5 lg:py-2 rounded-lg transition-all duration-300 flex items-center gap-1.5 lg:gap-2 ${
                             isRouteActive
                               ? "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30"
                               : "text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50/50 dark:hover:bg-purple-900/20"
                           }`
                         }
                       >
-                        <link.icon className="w-4 h-4" />
-                        <span>{link.name}</span>
+                        <link.icon className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
+                        <span className="hidden lg:inline">{link.name}</span>
+                        <span className="lg:hidden">{link.name.charAt(0)}</span>
                       </NavLink>
                     )}
                   </motion.div>
@@ -254,25 +294,25 @@ const Navbar = () => {
                 variants={linkVariants}
                 initial="hidden"
                 animate="visible"
-                className="ml-2"
+                className="ml-1 lg:ml-2"
               >
                 <DarkModeToggle />
               </motion.div>
             </div>
 
             {/* Mobile Controls */}
-            <div className="flex items-center gap-3 md:hidden">
+            <div className="flex items-center gap-2 sm:gap-3 md:hidden">
               <DarkModeToggle />
 
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={toggleMobileMenu}
-                className="relative p-2.5 rounded-xl bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/30 dark:to-blue-900/30 text-gray-700 dark:text-gray-300 hover:shadow-lg transition-all duration-300"
+                className="relative p-2 sm:p-2.5 rounded-xl bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/30 dark:to-blue-900/30 text-gray-700 dark:text-gray-300 hover:shadow-lg transition-all duration-300"
               >
                 {isMobileMenuOpen ? (
-                  <XMarkIcon className="h-5 w-5" />
+                  <XMarkIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                 ) : (
-                  <Bars3Icon className="h-5 w-5" />
+                  <Bars3Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                 )}
               </motion.button>
             </div>
@@ -285,7 +325,7 @@ const Navbar = () => {
             animate={isMobileMenuOpen ? "open" : "closed"}
             className="md:hidden overflow-hidden"
           >
-            <div className="pt-4 pb-3 flex flex-col gap-1 border-t border-gray-200/50 dark:border-gray-800/50 mt-3">
+            <div className="pt-3 sm:pt-4 pb-2 sm:pb-3 flex flex-col gap-0.5 sm:gap-1 border-t border-gray-200/50 dark:border-gray-800/50 mt-2 sm:mt-3">
               {links.map((link) => {
                 const isActive = link.id ? isHashLinkActive(link.id) : false;
                 
@@ -299,18 +339,18 @@ const Navbar = () => {
                       <a
                         href={link.href}
                         onClick={(e) => handleHashLinkClick(e, link.href, link.id)}
-                        className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
+                        className={`flex items-center gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 ${
                           isActive
                             ? "bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/30 dark:to-blue-900/30 text-purple-600 dark:text-purple-400"
                             : "text-gray-700 dark:text-gray-300 hover:bg-purple-50/50 dark:hover:bg-purple-900/20"
                         }`}
                       >
-                        <link.icon className="w-5 h-5" />
+                        <link.icon className="w-4 h-4 sm:w-5 sm:h-5" />
                         <span>{link.name}</span>
                         {isActive && (
                           <motion.div
                             layoutId="mobileIndicator"
-                            className="ml-auto w-1.5 h-6 rounded-full bg-gradient-to-b from-purple-600 to-blue-600"
+                            className="ml-auto w-1 h-5 sm:w-1.5 sm:h-6 rounded-full bg-gradient-to-b from-purple-600 to-blue-600"
                             transition={{ type: "spring", stiffness: 500, damping: 30 }}
                           />
                         )}
@@ -320,14 +360,14 @@ const Navbar = () => {
                         to={link.route}
                         onClick={closeMenu}
                         className={({ isActive: isRouteActive }) =>
-                          `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
+                          `flex items-center gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 ${
                             isRouteActive
                               ? "bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/30 dark:to-blue-900/30 text-purple-600 dark:text-purple-400"
                               : "text-gray-700 dark:text-gray-300 hover:bg-purple-50/50 dark:hover:bg-purple-900/20"
                           }`
                         }
                       >
-                        <link.icon className="w-5 h-5" />
+                        <link.icon className="w-4 h-4 sm:w-5 sm:h-5" />
                         <span>{link.name}</span>
                       </NavLink>
                     )}
