@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { CodeBracketIcon, ServerIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
 
 const Hero = () => {
@@ -92,25 +92,29 @@ const Hero = () => {
             className="mt-8 flex gap-4 justify-center lg:justify-start"
           >
             <a
-              href="#"
+              href="https://github.com/mohankumaronly"
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-2.5 text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors rounded-full hover:bg-purple-50 dark:hover:bg-purple-900/20"
               aria-label="GitHub"
             >
               <FaGithub size={24} />
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/in/mohan-kumar-3151a1308"
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-2.5 text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors rounded-full hover:bg-purple-50 dark:hover:bg-purple-900/20"
               aria-label="LinkedIn"
             >
               <FaLinkedin size={24} />
             </a>
             <a
-              href="#"
+              href="mailto:mohankumaronly81@gmail.com"
               className="p-2.5 text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors rounded-full hover:bg-purple-50 dark:hover:bg-purple-900/20"
-              aria-label="Twitter"
+              aria-label="Email"
             >
-              <FaTwitter size={24} />
+              <FaEnvelope size={24} />
             </a>
           </motion.div>
         </div>
