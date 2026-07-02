@@ -10,7 +10,11 @@ import {
   TrophyIcon,
   UserGroupIcon,
   RocketLaunchIcon,
-  CheckBadgeIcon
+  CheckBadgeIcon,
+  CpuChipIcon,
+  CommandLineIcon,
+  SwatchIcon,
+  GlobeAltIcon
 } from "@heroicons/react/24/outline";
 
 const skillGroups = [
@@ -73,6 +77,14 @@ const skillGroups = [
 ];
 
 const Skills = () => {
+  const [activeTab, setActiveTab] = useState(0);
+  const [selectedSkill, setSelectedSkill] = useState(null);
+
+  // Helper function to render icon component
+  const renderIcon = (IconComponent, className) => {
+    return <IconComponent className={className} />;
+  };
+
   return (
     <section
       id="skills"
@@ -85,7 +97,7 @@ const Skills = () => {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
+        {/* Section Header - New Design */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -94,120 +106,204 @@ const Skills = () => {
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 bg-gradient-to-r from-purple-500/10 to-blue-500/10 dark:from-purple-500/20 dark:to-blue-500/20 rounded-full border border-purple-200/50 dark:border-purple-800/50">
-            <RocketLaunchIcon className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+            <SparklesIcon className="w-4 h-4 text-purple-600 dark:text-purple-400 animate-pulse" />
             <span className="text-xs font-semibold tracking-wider text-purple-600 dark:text-purple-400 uppercase">
-              My Arsenal
+              Tech Stack
             </span>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white">
-            Skills &{" "}
-            <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 bg-clip-text text-transparent">
-              Expertise
+            My{" "}
+            <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 bg-clip-text text-transparent animate-gradient bg-300%">
+              Developer
             </span>
+            {" "}Toolbox
           </h2>
           <p className="mt-4 text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Technologies I've mastered to build exceptional digital experiences
+            Here's my tech stack - the tools and technologies I use to build amazing applications
           </p>
         </motion.div>
 
-        {/* Skills Grid - Clean cards without percentages */}
-        <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {skillGroups.map((group, i) => (
-            <motion.div
-              key={group.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              viewport={{ once: true, margin: "-50px" }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="relative bg-white/70 dark:bg-gray-800/50 backdrop-blur-sm rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50 group"
-            >
-              {/* Glass effect overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent dark:from-white/5 rounded-3xl pointer-events-none"></div>
-              
-              {/* Header */}
-              <div className="relative flex items-center gap-4 mb-6">
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${group.color} flex items-center justify-center shadow-lg transform group-hover:rotate-6 transition-transform duration-300`}>
-                  <group.icon className="w-7 h-7 text-white" />
-                </div>
-                <div>
-                  <span className="text-2xl">{group.emoji}</span>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                    {group.title}
-                  </h3>
-                  <div className={`w-12 h-0.5 bg-gradient-to-r ${group.color} rounded-full mt-1`}></div>
-                </div>
-              </div>
-
-              {/* Skills List - Clean tags */}
-              <div className="relative flex flex-wrap gap-2">
-                {group.skills.map((skill, idx) => (
-                  <motion.span
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: idx * 0.05 + 0.2, duration: 0.3 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.05 }}
-                    className={`px-4 py-2 text-sm font-medium rounded-xl border ${group.bgColor} border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-1.5`}
-                  >
-                    <CheckBadgeIcon className={`w-4 h-4 ${group.iconColor}`} />
-                    {skill}
-                  </motion.span>
-                ))}
-              </div>
-
-              {/* Skill count badge */}
-              <div className="absolute top-4 right-4 px-2.5 py-1 rounded-lg bg-gradient-to-r from-purple-500/10 to-blue-500/10 dark:from-purple-500/20 dark:to-blue-500/20 border border-purple-200/50 dark:border-purple-800/50">
-                <span className="text-xs font-semibold text-purple-600 dark:text-purple-400">
-                  {group.skills.length} skills
-                </span>
-              </div>
-            </motion.div>
-          ))}
+        {/* Modern Tabs Navigation */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {skillGroups.map((group, index) => {
+            const IconComponent = group.icon;
+            return (
+              <motion.button
+                key={group.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05, duration: 0.3 }}
+                viewport={{ once: true }}
+                onClick={() => setActiveTab(index)}
+                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+                  activeTab === index
+                    ? `bg-gradient-to-r ${group.color} text-white shadow-lg shadow-purple-500/30`
+                    : 'bg-white/70 dark:bg-gray-800/70 text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
+                }`}
+              >
+                <IconComponent className="w-4 h-4" />
+                {group.title}
+              </motion.button>
+            );
+          })}
         </div>
 
-        {/* Stats Section - Cleaner design */}
+        {/* Dynamic Content Area */}
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="mb-16"
+        >
+          <div className="grid lg:grid-cols-5 gap-6">
+            {/* Left - Main Card */}
+            <div className="lg:col-span-3">
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-3xl p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-2xl hover:shadow-3xl transition-shadow duration-500">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${skillGroups[activeTab].color} flex items-center justify-center shadow-lg animate-float`}>
+                    {(() => {
+                      const IconComponent = skillGroups[activeTab].icon;
+                      return <IconComponent className="w-8 h-8 text-white" />;
+                    })()}
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                      {skillGroups[activeTab].title}
+                    </h3>
+                    <div className={`w-16 h-1 bg-gradient-to-r ${skillGroups[activeTab].color} rounded-full mt-1`}></div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {skillGroups[activeTab].skills.map((skill, idx) => (
+                    <motion.div
+                      key={skill}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: idx * 0.05, duration: 0.3 }}
+                      whileHover={{ 
+                        scale: 1.05,
+                        rotate: idx % 2 === 0 ? 1 : -1,
+                        transition: { type: "spring", stiffness: 300 }
+                      }}
+                      onClick={() => setSelectedSkill(selectedSkill === skill ? null : skill)}
+                      className={`p-4 rounded-2xl border-2 cursor-pointer transition-all duration-300 ${
+                        selectedSkill === skill
+                          ? `border-purple-500 bg-gradient-to-br ${skillGroups[activeTab].bgColor}`
+                          : 'border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-700'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${skillGroups[activeTab].color} flex items-center justify-center shadow-md`}>
+                          <CheckBadgeIcon className="w-5 h-5 text-white" />
+                        </div>
+                        <span className="font-medium text-gray-800 dark:text-gray-200">
+                          {skill}
+                        </span>
+                      </div>
+                      {selectedSkill === skill && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700"
+                        >
+                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                            {`Expert in ${skill} with hands-on experience in real-world projects`}
+                          </p>
+                        </motion.div>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right - Stats & Info */}
+            <div className="lg:col-span-2 space-y-4">
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-3xl p-6 border border-gray-200/50 dark:border-gray-700/50 shadow-xl">
+                <div className="flex items-center gap-3 mb-4">
+                  <CpuChipIcon className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                  <h4 className="font-semibold text-gray-900 dark:text-white">Proficiency</h4>
+                </div>
+                <div className="space-y-3">
+                  {skillGroups[activeTab].skills.slice(0, 4).map((skill, idx) => (
+                    <div key={skill} className="space-y-1">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-700 dark:text-gray-300">{skill}</span>
+                        <span className="text-purple-600 dark:text-purple-400 font-semibold">
+                          {90 - idx * 5}%
+                        </span>
+                      </div>
+                      <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          animate={{ width: `${90 - idx * 5}%` }}
+                          transition={{ duration: 1, delay: idx * 0.1 }}
+                          className={`h-full bg-gradient-to-r ${skillGroups[activeTab].color} rounded-full`}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-3xl p-6 border border-gray-200/50 dark:border-gray-700/50 shadow-xl">
+                <div className="flex items-center gap-3 mb-3">
+                  <GlobeAltIcon className="w-6 h-6 text-green-600 dark:text-green-400" />
+                  <h4 className="font-semibold text-gray-900 dark:text-white">Projects Using</h4>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {[1, 2, 3].map((i) => (
+                    <span key={i} className="px-3 py-1 text-xs font-medium bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full border border-purple-200 dark:border-purple-800">
+                      Project {i}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Floating Tech Stack - New Design */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
           viewport={{ once: true }}
-          className="mt-16"
+          className="relative"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { number: "5+", label: "Core Technologies", icon: CodeBracketIcon, color: "from-blue-500 to-cyan-400" },
-              { number: "15+", label: "Skills Mastered", icon: TrophyIcon, color: "from-yellow-500 to-orange-400" },
-              { number: "100%", label: "Commitment to Quality", icon: ShieldCheckIcon, color: "from-green-500 to-emerald-400" },
-              { number: "24/7", label: "Learning Mindset", icon: UserGroupIcon, color: "from-purple-500 to-pink-400" },
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                viewport={{ once: true }}
-                className="relative group text-center p-6 rounded-2xl bg-white/80 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
-                <div className="relative">
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center mx-auto mb-3 shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
-                    <stat.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <div className="text-3xl font-bold text-gray-900 dark:text-white">
-                    {stat.number}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">
-                    {stat.label}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+          <div className="bg-gradient-to-r from-purple-500/10 via-transparent to-blue-500/10 dark:from-purple-500/5 dark:to-blue-500/5 rounded-3xl p-8 border border-purple-200/30 dark:border-purple-800/30">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { icon: CodeBracketIcon, label: "Frontend", color: "from-blue-500 to-cyan-400" },
+                { icon: ServerIcon, label: "Backend", color: "from-green-500 to-emerald-400" },
+                { icon: ShieldCheckIcon, label: "Security", color: "from-purple-500 to-pink-400" },
+                { icon: WrenchScrewdriverIcon, label: "DevOps", color: "from-gray-600 to-gray-400" },
+              ].map((item, index) => {
+                const IconComponent = item.icon;
+                return (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -5, scale: 1.05 }}
+                    className="text-center p-4 rounded-2xl bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-2xl transition-all duration-300"
+                  >
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
+                      <IconComponent className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="font-semibold text-gray-900 dark:text-white">{item.label}</h4>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </motion.div>
 
-        {/* Tech Stack Tags - Enhanced */}
+        {/* Bottom Floating Tags */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -231,14 +327,28 @@ const Skills = () => {
               whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ delay: index * 0.05, duration: 0.3 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              className={`px-4 py-2 text-sm font-semibold bg-gradient-to-r ${tech.color} text-white rounded-full shadow-lg shadow-${tech.color.split(' ')[1]?.replace('-600', '')}-500/20 hover:shadow-xl transition-all duration-300 cursor-default`}
+              whileHover={{ 
+                scale: 1.15, 
+                rotate: 5,
+                transition: { type: "spring", stiffness: 300 }
+              }}
+              className="group relative px-5 py-2.5 text-sm font-semibold bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full shadow-lg shadow-purple-500/20 hover:shadow-xl transition-all duration-300 cursor-default"
             >
-              {tech.name}
+              <span className="relative z-10">{tech.name}</span>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg"></div>
             </motion.span>
           ))}
         </motion.div>
       </div>
+
+      <style jsx>{`
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        .bg-300\% { background-size: 300% 300%; }
+        .animate-gradient { animation: gradient 6s ease infinite; }
+      `}</style>
     </section>
   );
 };
