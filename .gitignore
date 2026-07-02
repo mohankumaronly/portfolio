@@ -57,3 +57,5 @@ temp/
 # Vite specific
 *.log
 *.tsbuildinfo
+
+.env

@@ -11,6 +11,7 @@ import {
   MessageCircle
 } from "lucide-react";
 import { useState } from "react";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -20,26 +21,102 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  // Initialize EmailJS with public key from environment variables
+  const initializeEmailJS = () => {
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    if (publicKey) {
+      emailjs.init(publicKey);
+    } else {
+      console.error("EmailJS public key is not configured in environment variables");
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    // Clear error when user starts typing
+    if (errorMessage) setErrorMessage("");
+    if (submitStatus) setSubmitStatus(null);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    // Validate form
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setErrorMessage("Please fill in all fields");
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setErrorMessage("Please enter a valid email address");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    setErrorMessage("");
+
+    try {
+      // Initialize EmailJS
+      initializeEmailJS();
+
+      // Get credentials from environment variables
+      const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+
+      // Check if credentials are configured
+      if (!SERVICE_ID || !TEMPLATE_ID) {
+        throw new Error("EmailJS service or template ID is not configured");
+      }
+
+      // Prepare template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_name: "Mohan",
+        reply_to: formData.email,
+      };
+
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams
+      );
+
+      console.log("Email sent successfully:", response.text);
+      
+      // Success
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
+      setErrorMessage("");
       
-      setTimeout(() => setSubmitStatus(null), 4000);
-    }, 1500);
+      // Clear success message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+      
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setSubmitStatus("error");
+      setErrorMessage(
+        error.text || "Failed to send message. Please try again later."
+      );
+      
+      // Clear error after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null);
+        setErrorMessage("");
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -209,7 +286,7 @@ const Contact = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
-                    Your Name
+                    Your Name *
                   </label>
                   <input
                     type="text"
@@ -223,7 +300,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
-                    Your Email
+                    Your Email *
                   </label>
                   <input
                     type="email"
@@ -239,7 +316,7 @@ const Contact = () => {
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
-                  Your Message
+                  Your Message *
                 </label>
                 <textarea
                   name="message"
@@ -251,6 +328,30 @@ const Contact = () => {
                   className="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 focus:border-transparent transition-all duration-300 resize-none"
                 />
               </div>
+
+              {/* Error Message */}
+              {errorMessage && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-2 text-red-600 dark:text-red-400 text-sm bg-red-50 dark:bg-red-900/20 p-3 rounded-xl border border-red-200 dark:border-red-800"
+                >
+                  <span className="text-lg">⚠️</span>
+                  <span>{errorMessage}</span>
+                </motion.div>
+              )}
+
+              {/* Success Message */}
+              {submitStatus === "success" && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-2 text-green-600 dark:text-green-400 text-sm bg-green-50 dark:bg-green-900/20 p-3 rounded-xl border border-green-200 dark:border-green-800"
+                >
+                  <span className="text-lg">✓</span>
+                  <span>Message sent successfully! I'll get back to you soon.</span>
+                </motion.div>
+              )}
 
               <motion.button
                 whileHover={{ scale: 1.02 }}
@@ -273,17 +374,6 @@ const Contact = () => {
                   </>
                 )}
               </motion.button>
-
-              {submitStatus === "success" && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex items-center gap-2 text-green-600 dark:text-green-400 text-sm bg-green-50 dark:bg-green-900/20 p-3 rounded-xl border border-green-200 dark:border-green-800"
-                >
-                  <span className="text-lg">✓</span>
-                  <span>Message sent successfully! I'll get back to you soon.</span>
-                </motion.div>
-              )}
             </form>
           </div>
         </motion.div>
