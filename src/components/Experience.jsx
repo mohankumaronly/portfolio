@@ -30,96 +30,90 @@ const Experience = () => {
         "Successfully deployed 3 production-ready features"
       ]
     },
-    // Add more experiences here as you grow
   ];
 
   return (
     <section
       id="experience"
-      className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 relative overflow-hidden"
+      className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900"
     >
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-purple-300/10 dark:bg-purple-900/10 rounded-full filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-blue-300/10 dark:bg-blue-900/10 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
-      </div>
-
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="max-w-5xl mx-auto">
+        
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/30 rounded-full">
-            <BriefcaseIcon className="w-3.5 h-3.5" />
+          <span className="inline-block px-3 py-1 mb-3 text-xs font-semibold tracking-wider text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 rounded-full">
             CAREER
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
-            Work <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Experience</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
+            Work <span className="text-blue-600 dark:text-blue-400">Experience</span>
           </h2>
+          <div className="w-16 h-1 bg-blue-600 dark:bg-blue-400 rounded-full mx-auto mt-3"></div>
           <p className="mt-4 text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Professional journey building production-ready applications with modern technologies
           </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full mx-auto mt-4"></div>
         </motion.div>
 
         {/* Timeline */}
         <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-600 via-blue-600 to-purple-600 hidden md:block"></div>
+          {/* Timeline line - hidden on mobile */}
+          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-blue-200 dark:bg-blue-800 hidden sm:block"></div>
 
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.title}
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.15, duration: 0.6 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
-              className="relative pl-0 md:pl-20 mb-8 last:mb-0"
+              className="relative pl-0 sm:pl-16 mb-6 last:mb-0"
             >
-              {/* Timeline dot */}
-              <div className="absolute left-0 top-0 hidden md:flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-white dark:bg-gray-800 border-4 border-purple-600 dark:border-purple-400 flex items-center justify-center shadow-lg shadow-purple-500/20">
-                  <BriefcaseIcon className="w-7 h-7 text-purple-600 dark:text-purple-400" />
+              {/* Timeline dot - hidden on mobile */}
+              <div className="absolute left-0 top-0 hidden sm:flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-white dark:bg-gray-800 border-2 border-blue-600 dark:border-blue-400 flex items-center justify-center shadow-sm">
+                  <BriefcaseIcon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                 </div>
               </div>
 
               {/* Experience Card */}
-              <div className="bg-white dark:bg-gray-800/50 rounded-2xl p-6 sm:p-8 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 group">
-                {/* Mobile timeline dot */}
-                <div className="flex md:hidden items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
-                    <BriefcaseIcon className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-5 sm:p-6 md:p-8 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
+                
+                {/* Mobile header with icon */}
+                <div className="flex sm:hidden items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                    <BriefcaseIcon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                   </div>
-                  <div className="flex-1 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600"></div>
+                  <div className="flex-1 h-0.5 bg-blue-200 dark:bg-blue-800"></div>
                 </div>
 
                 {/* Header */}
-                <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">
                       {exp.title}
                     </h3>
-                    <div className="flex flex-wrap items-center gap-3 mt-1.5">
+                    <div className="flex flex-wrap items-center gap-2 mt-1">
                       <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                         {exp.company}
                       </span>
-                      <span className="w-1 h-1 rounded-full bg-gray-400 dark:bg-gray-600"></span>
-                      <span className="text-xs px-2 py-0.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full font-medium">
+                      <span className="w-1 h-1 rounded-full bg-gray-400 dark:bg-gray-600 hidden xs:inline"></span>
+                      <span className="text-xs px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full font-medium">
                         {exp.type}
                       </span>
                     </div>
                   </div>
-                  <div className="flex flex-col items-end gap-1">
-                    <div className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
-                      <CalendarIcon className="w-4 h-4" />
+                  <div className="flex flex-col items-start sm:items-end gap-0.5 text-xs sm:text-sm text-gray-600 dark:text-gray-400 flex-shrink-0">
+                    <div className="flex items-center gap-1.5">
+                      <CalendarIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       <span>{exp.period}</span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
-                      <MapPinIcon className="w-4 h-4" />
+                    <div className="flex items-center gap-1.5">
+                      <MapPinIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       <span>{exp.location}</span>
                     </div>
                   </div>
@@ -130,17 +124,17 @@ const Experience = () => {
                   <h4 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
                     Responsibilities
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5">
                     {exp.description.map((item, idx) => (
                       <motion.li
                         key={idx}
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: idx * 0.05 + 0.2 }}
+                        transition={{ delay: idx * 0.05 + 0.1 }}
                         viewport={{ once: true }}
                         className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300"
                       >
-                        <span className="text-purple-500 dark:text-purple-400 mt-0.5">▹</span>
+                        <span className="text-blue-500 dark:text-blue-400 mt-0.5 flex-shrink-0">▹</span>
                         <span>{item}</span>
                       </motion.li>
                     ))}
@@ -156,7 +150,7 @@ const Experience = () => {
                     {exp.tech.map((tech, idx) => (
                       <span
                         key={idx}
-                        className="px-2.5 py-0.5 text-xs font-medium bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-full border border-purple-100 dark:border-purple-800"
+                        className="px-2.5 py-0.5 text-xs font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-full border border-blue-100 dark:border-blue-800"
                       >
                         {tech}
                       </span>
@@ -177,11 +171,11 @@ const Experience = () => {
                           key={idx}
                           initial={{ opacity: 0, scale: 0.95 }}
                           whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: idx * 0.05 + 0.4 }}
+                          transition={{ delay: idx * 0.05 + 0.2 }}
                           viewport={{ once: true }}
-                          className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 p-2 rounded-lg border border-purple-100 dark:border-purple-800/50"
+                          className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/30 p-2.5 rounded-lg border border-gray-100 dark:border-gray-700"
                         >
-                          <CheckCircleIcon className="w-4 h-4 text-green-500 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                          <CheckCircleIcon className="w-4 h-4 text-emerald-500 dark:text-emerald-400 mt-0.5 flex-shrink-0" />
                           <span>{achievement}</span>
                         </motion.div>
                       ))}
@@ -195,17 +189,17 @@ const Experience = () => {
 
         {/* Call to Action */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
+          transition={{ delay: 0.3, duration: 0.4 }}
           viewport={{ once: true }}
-          className="mt-12 text-center"
+          className="mt-10 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800/50 rounded-full border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
+          <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-white dark:bg-gray-800 rounded-full border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
             <span className="text-sm text-gray-700 dark:text-gray-300">
               💼 Open to new opportunities
             </span>
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
           </div>
         </motion.div>
       </div>
