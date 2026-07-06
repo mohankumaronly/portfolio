@@ -7,7 +7,8 @@ import {
   CloudArrowUpIcon,
   CommandLineIcon,
   UserGroupIcon,
-  SparklesIcon
+  SparklesIcon,
+  CheckCircleIcon
 } from "@heroicons/react/24/outline";
 
 const highlights = [
@@ -15,153 +16,152 @@ const highlights = [
     title: "Secure Systems",
     desc: "Implementing JWT authentication, email verification, password reset flows, and role-based access control using Spring Security.",
     icon: ShieldCheckIcon,
-    color: "from-purple-500 to-purple-600",
-    bgColor: "bg-purple-50 dark:bg-purple-900/20",
-    iconColor: "text-purple-600 dark:text-purple-400"
+    bgColor: "bg-blue-50 dark:bg-blue-900/20",
+    iconColor: "text-blue-600 dark:text-blue-400",
+    borderColor: "border-blue-200 dark:border-blue-800"
   },
   {
     title: "Scalable Backends",
     desc: "Building RESTful APIs with Spring Boot, Hibernate (JPA), and PostgreSQL, focusing on clean architecture and performance optimization.",
     icon: ServerIcon,
-    color: "from-blue-500 to-blue-600",
-    bgColor: "bg-blue-50 dark:bg-blue-900/20",
-    iconColor: "text-blue-600 dark:text-blue-400"
+    bgColor: "bg-indigo-50 dark:bg-indigo-900/20",
+    iconColor: "text-indigo-600 dark:text-indigo-400",
+    borderColor: "border-indigo-200 dark:border-indigo-800"
   },
   {
     title: "Cloud-Ready Apps",
     desc: "Developing production ready applications using Neon PostgreSQL, secure authentication workflows, and responsive React frontends.",
     icon: CubeIcon,
-    color: "from-green-500 to-green-600",
-    bgColor: "bg-green-50 dark:bg-green-900/20",
-    iconColor: "text-green-600 dark:text-green-400"
+    bgColor: "bg-teal-50 dark:bg-teal-900/20",
+    iconColor: "text-teal-600 dark:text-teal-400",
+    borderColor: "border-teal-200 dark:border-teal-800"
   },
 ];
 
 const techStack = [
   { name: "Java", icon: CodeBracketIcon, color: "text-red-500" },
-  { name: "Spring Boot", icon: CommandLineIcon, color: "text-green-600" },
+  { name: "Spring Boot", icon: CommandLineIcon, color: "text-emerald-600" },
   { name: "React", icon: SparklesIcon, color: "text-blue-500" },
-  { name: "PostgreSQL", icon: CloudArrowUpIcon, color: "text-blue-800" },
+  { name: "PostgreSQL", icon: CloudArrowUpIcon, color: "text-blue-700" },
+];
+
+const stats = [
+  { number: "3+", label: "Years of Learning", icon: UserGroupIcon },
+  { number: "5+", label: "Projects Completed", icon: CodeBracketIcon },
+  { number: "8+", label: "Technologies", icon: SparklesIcon },
+  { number: "100%", label: "Commitment", icon: ShieldCheckIcon },
+];
+
+const expertise = [
+  "Backend: Spring Boot, Spring Security, Hibernate (JPA), RESTful APIs",
+  "Frontend: React, Redux, Tailwind CSS, Responsive Design",
+  "Database: PostgreSQL, MySQL, Neon PostgreSQL",
+  "DevOps: Git, Docker, AWS, CI/CD Pipelines",
 ];
 
 const About = () => {
   return (
     <section
       id="about"
-      className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 relative overflow-hidden"
+      className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 relative"
     >
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-300/10 dark:bg-purple-900/10 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-300/10 dark:bg-blue-900/10 rounded-full filter blur-3xl"></div>
-      </div>
-
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto">
+        
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
-          <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/30 rounded-full">
-            GET TO KNOW ME
+          <span className="inline-block px-3 py-1 mb-3 text-xs font-semibold tracking-wider text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+            ABOUT ME
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
-            About <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Me</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
+            Know Me <span className="text-blue-600 dark:text-blue-400">Better</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full mx-auto mt-4"></div>
+          <div className="w-16 h-1 bg-blue-600 dark:bg-blue-400 rounded-full mx-auto mt-3"></div>
         </motion.div>
 
-        {/* Main Description with Timeline */}
-        <div className="grid lg:grid-cols-5 gap-12 items-start mb-16">
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-5 gap-8 md:gap-12 mb-16">
+          
+          {/* Left Content */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
             className="lg:col-span-3"
           >
-            <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              I'm a passionate <span className="font-semibold text-purple-600 dark:text-purple-400">Java Full Stack Developer</span> dedicated to building 
+            <p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              I'm a passionate <span className="font-semibold text-blue-600 dark:text-blue-400">Java Full Stack Developer</span> dedicated to building 
               secure, scalable, and production-ready web applications. With a strong 
               foundation in both backend and frontend technologies, I create 
               comprehensive solutions that solve real-world problems.
             </p>
-            <div className="mt-6 space-y-3">
-              {[
-                "⚡ Backend: Spring Boot, Spring Security, Hibernate (JPA), RESTful APIs",
-                "⚡ Frontend: React, Redux, Tailwind CSS, Responsive Design",
-                "⚡ Database: PostgreSQL, MySQL, Neon PostgreSQL",
-                "⚡ DevOps: Git, Docker, AWS, CI/CD Pipelines",
-              ].map((item, index) => (
+            
+            <div className="mt-6 space-y-2.5">
+              {expertise.map((item, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -15 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  transition={{ delay: index * 0.08, duration: 0.4 }}
                   viewport={{ once: true }}
                   className="flex items-start gap-3 text-gray-700 dark:text-gray-300"
                 >
-                  <span className="text-purple-600 dark:text-purple-400 mt-1">▹</span>
+                  <CheckCircleIcon className="w-4 h-4 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
                   <span className="text-sm sm:text-base">{item}</span>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Stats with icons */}
+          {/* Stats Grid */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 grid grid-cols-2 gap-4"
+            className="lg:col-span-2 grid grid-cols-2 gap-3 sm:gap-4"
           >
-            {[
-              { number: "3+", label: "Years of Learning", icon: UserGroupIcon },
-              { number: "2+", label: "Projects Completed", icon: CodeBracketIcon },
-              { number: "4+", label: "Technologies", icon: SparklesIcon },
-              { number: "100%", label: "Commitment", icon: ShieldCheckIcon },
-            ].map((stat, index) => (
+            {stats.map((stat, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
+                transition={{ delay: index * 0.08, duration: 0.4 }}
                 viewport={{ once: true }}
-                className="bg-white dark:bg-gray-800/50 rounded-xl p-4 text-center border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-1"
+                whileHover={{ y: -4 }}
+                className="bg-white dark:bg-gray-800 rounded-xl p-4 text-center border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <div className="flex justify-center mb-2">
-                  <stat.icon className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-                </div>
-                <div className="text-2xl font-bold text-gray-900 dark:text-white">{stat.number}</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">{stat.label}</div>
+                <stat.icon className="w-5 h-5 text-blue-600 dark:text-blue-400 mx-auto mb-2" />
+                <div className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{stat.number}</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
         </div>
 
         {/* Highlights Cards */}
-        <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-3">
           {highlights.map((item, i) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.15, duration: 0.6 }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
               viewport={{ once: true, margin: "-50px" }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className={`${item.bgColor} rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 group relative overflow-hidden`}
+              whileHover={{ y: -6 }}
+              className={`${item.bgColor} rounded-xl p-5 sm:p-6 border ${item.borderColor} hover:shadow-lg transition-all duration-300`}
             >
-              <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${item.color} opacity-5 rounded-full transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-500`}></div>
-              
-              <div className={`w-14 h-14 rounded-xl ${item.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                <item.icon className={`w-7 h-7 ${item.iconColor}`} />
+              <div className={`w-12 h-12 rounded-lg ${item.bgColor} flex items-center justify-center mb-3`}>
+                <item.icon className={`w-6 h-6 ${item.iconColor}`} />
               </div>
 
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-1.5">
                 {item.title}
               </h3>
 
@@ -169,35 +169,35 @@ const About = () => {
                 {item.desc}
               </p>
 
-              <div className={`mt-4 w-12 h-0.5 bg-gradient-to-r ${item.color} rounded-full group-hover:w-20 transition-all duration-300`}></div>
+              <div className={`mt-3 w-10 h-0.5 ${item.iconColor} rounded-full`}></div>
             </motion.div>
           ))}
         </div>
 
-        {/* Tech Stack Section */}
+        {/* Tech Stack */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
           viewport={{ once: true }}
-          className="mt-16 pt-12 border-t border-gray-200 dark:border-gray-700"
+          className="mt-12 pt-10 border-t border-gray-200 dark:border-gray-700"
         >
-          <h3 className="text-center text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-8">
+          <h3 className="text-center text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-6">
             Technology Stack
           </h3>
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             {techStack.map((tech, index) => (
               <motion.div
                 key={tech.name}
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1, duration: 0.4 }}
+                transition={{ delay: index * 0.08, duration: 0.3 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -4, scale: 1.05 }}
-                className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-full border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300"
+                whileHover={{ y: -3 }}
+                className="flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-white dark:bg-gray-800 rounded-full border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <tech.icon className={`w-5 h-5 ${tech.color}`} />
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{tech.name}</span>
+                <tech.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${tech.color}`} />
+                <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">{tech.name}</span>
               </motion.div>
             ))}
           </div>
