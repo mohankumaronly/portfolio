@@ -159,29 +159,27 @@ const Skills = () => {
               </div>
             </div>
 
-            {/* Quick Stats */}
+            {/* Quick Stats - Without Percentages */}
             <div className="space-y-4">
               <div className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm">
                 <h4 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
-                  Proficiency
+                  Skill Categories
                 </h4>
-                <div className="space-y-3">
-                  {skillGroups[activeTab].skills.slice(0, 4).map((skill, idx) => (
-                    <div key={skill}>
-                      <div className="flex justify-between text-xs mb-1">
-                        <span className="text-gray-700 dark:text-gray-300">{skill}</span>
-                        <span className="text-blue-600 dark:text-blue-400 font-medium">
-                          {85 - idx * 5}%
-                        </span>
+                <div className="space-y-2.5">
+                  {skillGroups.map((group, idx) => (
+                    <div key={group.title} className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className={`p-1.5 rounded ${group.bgColor}`}>
+                          {(() => {
+                            const IconComponent = group.icon;
+                            return <IconComponent className={`w-3.5 h-3.5 ${group.iconColor}`} />;
+                          })()}
+                        </div>
+                        <span className="text-sm text-gray-700 dark:text-gray-300">{group.title}</span>
                       </div>
-                      <div className="w-full h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${85 - idx * 5}%` }}
-                          transition={{ duration: 0.8, delay: idx * 0.1 }}
-                          className={`h-full bg-blue-600 dark:bg-blue-400 rounded-full`}
-                        />
-                      </div>
+                      <span className="text-xs font-medium text-blue-600 dark:text-blue-400">
+                        {group.skills.length} skills
+                      </span>
                     </div>
                   ))}
                 </div>
