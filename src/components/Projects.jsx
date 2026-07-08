@@ -7,23 +7,25 @@ import project5 from "../assets/images/project5.png";
 
 const projects = [
   {
-    title: "LearnFlow – SaaS Learning Platform",
+    title: "Tap Job Scraper & Alerts",
     image: project1,
-    desc: "A production-ready SaaS platform for students and instructors with secure authentication, scalable backend architecture, and modern frontend integration.",
+    desc: "A full-stack job alert platform built with React, TypeScript, Tailwind CSS, and Spring Boot that automatically scrapes the latest job openings from Tap Academy. The system stores job listings in PostgreSQL, prevents duplicate entries, and sends instant email notifications to verified subscribers using the Brevo Email API.",
     features: [
-      "Spring Boot authentication with JWT & refresh tokens",
-      "Email verification & password reset using Brevo",
-      "PostgreSQL (Neon) with Hibernate (JPA)",
-      "Spring Security with role-based access control",
-      "Swagger API documentation for testing",
-      "React frontend with API integration",
+      "Automated job scraping from Tap Academy",
+      "OTP-based email verification for subscribers",
+      "Instant email notifications using Brevo Email API",
+      "Cron-based scheduled job synchronization",
+      "Duplicate job detection and database storage",
+      "Browse and search active job listings",
+      "Secure REST APIs with Spring Security",
+      "Responsive frontend built with React and Tailwind CSS"
     ],
-    tech: "Java, Spring Boot, Spring Security, PostgreSQL, Hibernate, React, JWT",
-    github: "https://github.com/mohankumaronly/LearnFlow",
-    live: "https://minilearnflow.vercel.app",
-    backend: "https://java-authentication-6hpt.onrender.com/test",
-    swagger: "https://java-authentication-6hpt.onrender.com/swagger-ui/index.html",
-    category: "SaaS"
+    tech: "React, TypeScript, Tailwind CSS, Spring Boot, Java 21, Spring Security, Spring Data JPA, Hibernate, PostgreSQL, NeonDB, Brevo Email API, Docker",
+    github: "https://github.com/mohankumaronly/Tap-Job-Scrapper",
+    live: "https://tapscraper.vercel.app/",
+    backend: "https://tapscraper.onrender.com/api",
+    swagger: "https://tapscraper.onrender.com/swagger-ui/index.html",
+    category: "Job Portal & Automation"
   },
   {
     title: "NASA Cosmic Vault",
