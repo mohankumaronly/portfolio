@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Github, ExternalLink, Server, BookOpen, SparklesIcon } from "lucide-react";
 import project1 from "../assets/images/project1.png";
 import project2 from "../assets/images/project2.png";
+import project4 from "../assets/images/project4.png";
+import project5 from "../assets/images/project5.png";
 
 const projects = [
   {
@@ -37,46 +39,50 @@ const projects = [
     ],
     tech: "React, Tailwind CSS, NASA APOD API, JavaScript, Vercel",
     github: "https://github.com/mohankumaronly/Cosmicvault",
-    live: "https://nasacosmicvault.vercel.app/",
+    live: "https://nasacosmicvault.vercel.app",
     category: "Space & Astronomy"
   },
   {
-    title: "HealthBridge – Telemedicine Platform",
-    image: project1,
-    desc: "A comprehensive telemedicine platform connecting patients with healthcare providers through secure video consultations and medical record management.",
+    title: "SQL Playground",
+    image: project4,
+    desc: "A frontend-only SQL Playground built with React and Tailwind CSS that allows users to write MySQL CREATE TABLE statements and instantly visualize database schema relationships. The application automatically generates an interactive ER diagram by detecting primary keys and foreign key connections between tables.",
     features: [
-      "Secure video consultation with WebRTC",
-      "Patient and doctor dashboard with appointments",
-      "Electronic health records (EHR) management",
-      "Prescription and medication tracking",
-      "Real-time chat and notifications",
-      "Multi-role access (Patient, Doctor, Admin)",
+      "Write and edit MySQL CREATE TABLE statements",
+      "Automatic ER diagram generation from SQL",
+      "Visual foreign key relationship mapping",
+      "Interactive database schema visualization",
+      "Syntax-highlighted SQL editor",
+      "Responsive and modern UI built with Tailwind CSS",
+      "Drag, zoom, and reposition database tables",
+      "Export generated database diagrams"
     ],
-    tech: "Spring Boot, React, WebRTC, PostgreSQL, Redis, JWT, Docker",
-    github: "https://github.com/mohankumaronly/HealthBridge",
-    live: "https://healthbridge.vercel.app",
-    backend: "https://healthbridge-api.onrender.com/api",
-    swagger: "https://healthbridge-api.onrender.com/swagger-ui/index.html",
-    category: "Healthcare"
+    tech: "React, Tailwind CSS, JavaScript, MySQL Parser, React Flow, Vercel",
+    github: "https://github.com/mohankumaronly/sql-playground",
+    live: "https://sqldiagram.vercel.app",
+    backend: "",
+    swagger: "",
+    category: "Developer Tools"
   },
   {
-    title: "DevForge – Developer Collaboration Hub",
-    image: project1,
-    desc: "A collaborative platform for developers to share code snippets, discuss technical challenges, and build projects together in real-time.",
+    title: "OrderUK – Food Delivery Landing Page",
+    image: project5,
+    desc: "A modern and responsive food delivery landing page built with React and Tailwind CSS by following a Figma design. The project showcases a clean user interface for browsing restaurants, food categories, exclusive offers, and promotional sections with a mobile-friendly layout.",
     features: [
-      "Code snippet sharing with syntax highlighting",
-      "Real-time collaboration with WebSocket",
-      "Project management and task tracking",
-      "Discussion forums with threaded comments",
-      "User reputation and gamification system",
-      "API documentation and testing tools",
+      "Pixel-perfect implementation from Figma design",
+      "Responsive layout for desktop, tablet, and mobile",
+      "Modern navigation bar with authentication buttons",
+      "Exclusive offers and featured restaurant sections",
+      "Popular food categories showcase",
+      "Clean component-based React architecture",
+      "Smooth and interactive UI design",
+      "Optimized frontend deployment with Vercel"
     ],
-    tech: "Java, Spring Boot, React, WebSocket, PostgreSQL, Redis, Tailwind CSS",
-    github: "https://github.com/mohankumaronly/DevForge",
-    live: "https://devforge.vercel.app",
-    backend: "https://devforge-api.onrender.com/api",
-    swagger: "https://devforge-api.onrender.com/swagger-ui/index.html",
-    category: "Developer Tools"
+    tech: "React, Tailwind CSS, JavaScript, Figma, Vercel",
+    github: "https://github.com/mohankumaronly/food-delivery-frontend-only",
+    live: "https://ordersuk.vercel.app",
+    backend: "",
+    swagger: "",
+    category: "Food & Restaurant"
   },
 ];
 
