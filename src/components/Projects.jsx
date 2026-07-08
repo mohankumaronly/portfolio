@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Github, ExternalLink, Server, BookOpen, SparklesIcon } from "lucide-react";
 import project1 from "../assets/images/project1.png";
+import project2 from "../assets/images/project2.png";
 
 const projects = [
   {
@@ -23,23 +24,21 @@ const projects = [
     category: "SaaS"
   },
   {
-    title: "EcoTrack – Carbon Footprint Tracker",
-    image: project1,
-    desc: "An eco-friendly application that helps users track and reduce their carbon footprint through data visualization and actionable insights.",
+    title: "NASA Cosmic Vault",
+    image: project2,
+    desc: "A responsive NASA-themed frontend website built with React and Tailwind CSS that displays daily space content using NASA's Astronomy Picture of the Day (APOD) API. The website automatically updates every day with the latest images and information published by NASA.",
     features: [
-      "Real-time carbon footprint calculations",
-      "Interactive data visualization with charts",
-      "User authentication and profile management",
-      "Goal setting and progress tracking",
-      "Email notifications for milestones",
-      "Responsive dashboard design",
+      "Daily NASA Astronomy Picture of the Day (APOD)",
+      "Automatic content updates using NASA API",
+      "Responsive UI built with Tailwind CSS",
+      "Modern React component-based architecture",
+      "Displays NASA image, title, explanation, and date",
+      "Fast deployment with Vercel"
     ],
-    tech: "React, Spring Boot, PostgreSQL, Chart.js, JWT, Tailwind CSS",
-    github: "https://github.com/mohankumaronly/EcoTrack",
-    live: "https://ecotrack.vercel.app",
-    backend: "https://ecotrack-api.onrender.com/api",
-    swagger: "https://ecotrack-api.onrender.com/swagger-ui/index.html",
-    category: "Sustainability"
+    tech: "React, Tailwind CSS, NASA APOD API, JavaScript, Vercel",
+    github: "https://github.com/mohankumaronly/Cosmicvault",
+    live: "https://nasacosmicvault.vercel.app/",
+    category: "Space & Astronomy"
   },
   {
     title: "HealthBridge – Telemedicine Platform",
@@ -93,7 +92,7 @@ const Projects = () => {
       className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900"
     >
       <div className="max-w-6xl mx-auto">
-        
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -110,7 +109,7 @@ const Projects = () => {
           </h2>
           <div className="w-16 h-1 bg-blue-600 dark:bg-blue-400 rounded-full mx-auto mt-3"></div>
           <p className="mt-4 text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Production-grade full stack applications showcasing secure backend architecture, 
+            Production-grade full stack applications showcasing secure backend architecture,
             modern frontend design, and scalable system solutions
           </p>
         </motion.div>
