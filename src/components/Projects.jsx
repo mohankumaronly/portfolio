@@ -4,9 +4,39 @@ import project1 from "../assets/images/project1.png";
 import project2 from "../assets/images/project2.png";
 import project4 from "../assets/images/project4.png";
 import project5 from "../assets/images/project5.png";
+import project6 from "../assets/images/project6.png";
 
 const projects = [
   {
+    id: 1,
+    title: "Resume ATS Score Analyzer",
+    image: project6,
+    desc: "An AI-powered resume analysis platform built for tech professionals to optimize their resumes for Applicant Tracking Systems (ATS). The application uses Groq AI to analyze resumes, provides detailed section-wise scoring, identifies missing keywords, and offers actionable suggestions for improvement. Features passwordless authentication with OTP-based email verification using Brevo SMTP.",
+    features: [
+      "AI-powered resume analysis using Groq API",
+      "ATS score (0-100) with detailed breakdown",
+      "Section-wise scoring: Formatting, Technical Skills, Experience, Projects, Education, Keywords",
+      "Identifies strengths, weaknesses, and missing keywords",
+      "Recommends skills to learn and provides actionable suggestions",
+      "Passwordless authentication with OTP-based email verification",
+      "Dark theme UI with Framer Motion animations",
+      "Secure JWT-based authentication with Spring Security",
+      "PDF text extraction using Apache PDFBox",
+      "Drag-and-drop resume upload with React Dropzone",
+      "Mobile-responsive design with Tailwind CSS",
+      "OTP verification using Brevo SMTP",
+      "Real-time analysis with loading states",
+      "Render free tier wake-up handling with retry mechanism"
+    ],
+    tech: "React 19, TypeScript, Tailwind CSS, Framer Motion, Vite, Spring Boot 3, Java 21, Spring Security, JWT, Apache PDFBox, Groq API, PostgreSQL (Neon), Brevo SMTP, Docker, Render, Vercel",
+    github: "https://github.com/mohankumaronly/Resume-Ats-Score-Checker",
+    live: "https://profileatsscore.vercel.app",
+    backend: "",
+    swagger: "",
+    category: "AI & Resume Optimization"
+  },
+  {
+    id: 2,
     title: "Tap Job Scraper & Alerts",
     image: project1,
     desc: "A full-stack job alert platform built with React, TypeScript, Tailwind CSS, and Spring Boot that automatically scrapes the latest job openings from Tap Academy. The system stores job listings in PostgreSQL, prevents duplicate entries, and sends instant email notifications to verified subscribers using the Brevo Email API.",
@@ -28,6 +58,7 @@ const projects = [
     category: "Job Portal & Automation"
   },
   {
+    id: 3,
     title: "NASA Cosmic Vault",
     image: project2,
     desc: "A responsive NASA-themed frontend website built with React and Tailwind CSS that displays daily space content using NASA's Astronomy Picture of the Day (APOD) API. The website automatically updates every day with the latest images and information published by NASA.",
@@ -42,9 +73,12 @@ const projects = [
     tech: "React, Tailwind CSS, NASA APOD API, JavaScript, Vercel",
     github: "https://github.com/mohankumaronly/Cosmicvault",
     live: "https://nasacosmicvault.vercel.app",
+    backend: "",
+    swagger: "",
     category: "Space & Astronomy"
   },
   {
+    id: 4,
     title: "SQL Playground",
     image: project4,
     desc: "A frontend-only SQL Playground built with React and Tailwind CSS that allows users to write MySQL CREATE TABLE statements and instantly visualize database schema relationships. The application automatically generates an interactive ER diagram by detecting primary keys and foreign key connections between tables.",
@@ -66,6 +100,7 @@ const projects = [
     category: "Developer Tools"
   },
   {
+    id: 5,
     title: "OrderUK – Food Delivery Landing Page",
     image: project5,
     desc: "A modern and responsive food delivery landing page built with React and Tailwind CSS by following a Figma design. The project showcases a clean user interface for browsing restaurants, food categories, exclusive offers, and promotional sections with a mobile-friendly layout.",
@@ -85,7 +120,7 @@ const projects = [
     backend: "",
     swagger: "",
     category: "Food & Restaurant"
-  },
+  }
 ];
 
 const openExternal = (url) => {
@@ -126,7 +161,7 @@ const Projects = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
           {projects.map((project, i) => (
             <motion.div
-              key={project.title}
+              key={project.id || project.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
@@ -218,25 +253,29 @@ const Projects = () => {
                     Live
                   </motion.button>
 
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => openExternal(project.backend)}
-                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-                  >
-                    <Server size={14} />
-                    API
-                  </motion.button>
+                  {project.backend && (
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => openExternal(project.backend)}
+                      className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+                    >
+                      <Server size={14} />
+                      API
+                    </motion.button>
+                  )}
 
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => openExternal(project.swagger)}
-                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-blue-300 dark:border-blue-700 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition"
-                  >
-                    <BookOpen size={14} />
-                    Docs
-                  </motion.button>
+                  {project.swagger && (
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => openExternal(project.swagger)}
+                      className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-blue-300 dark:border-blue-700 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition"
+                    >
+                      <BookOpen size={14} />
+                      Docs
+                    </motion.button>
+                  )}
                 </div>
               </div>
             </motion.div>
