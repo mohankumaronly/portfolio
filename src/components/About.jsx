@@ -112,7 +112,7 @@ const About = () => {
                   viewport={{ once: true }}
                   className="flex items-start gap-3 text-gray-700 dark:text-gray-300"
                 >
-                  <CheckCircleIcon className="w-4 h-4 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                  <CheckCircleIcon className="w-4 h-4 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
                   <span className="text-sm sm:text-base">{item}</span>
                 </motion.div>
               ))}
