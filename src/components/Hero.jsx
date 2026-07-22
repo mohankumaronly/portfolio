@@ -74,8 +74,8 @@ const Hero = () => {
             </a>
 
             <a
-              href="/pdf/Mohan_resume.pdf"
-              download="Mohan_Resume.pdf"
+              href="/pdf/Mohan.pdf"
+              download="Mohan.pdf"
               className="inline-flex items-center justify-center px-6 py-2.5 lg:py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:border-blue-600 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 w-full sm:w-auto"
             >
               Download CV
