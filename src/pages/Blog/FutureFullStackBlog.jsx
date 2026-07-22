@@ -74,7 +74,7 @@ const FutureFullStackBlog = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="mt-8 flex items-center gap-3"
         >
-          <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+          <div className="w-12 h-12 bg-linear-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
             M
           </div>
           <div>
@@ -581,7 +581,7 @@ const user = await db.query({
               How to Prepare for 2026
             </h2>
 
-            <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-6 rounded-xl text-white">
+            <div className="bg-linear-to-r from-purple-500 to-pink-500 p-6 rounded-xl text-white">
               <h3 className="text-xl font-bold mb-4">Your 2026 Readiness Checklist</h3>
               
               <div className="grid md:grid-cols-2 gap-4">

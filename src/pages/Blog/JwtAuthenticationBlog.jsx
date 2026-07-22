@@ -66,7 +66,7 @@
             transition={{ delay: 0.3, duration: 0.6 }}
             className="mt-8 flex items-center gap-3"
           >
-            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+            <div className="w-12 h-12 bg-linear-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
               M
             </div>
             <div>

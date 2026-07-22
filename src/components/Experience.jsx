@@ -85,7 +85,7 @@ const Experience = () => {
                 
                 {/* Mobile header with icon */}
                 <div className="flex sm:hidden items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center shrink-0">
                     <BriefcaseIcon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                   </div>
                   <div className="flex-1 h-0.5 bg-blue-200 dark:bg-blue-800"></div>
@@ -107,7 +107,7 @@ const Experience = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="flex flex-col items-start sm:items-end gap-0.5 text-xs sm:text-sm text-gray-600 dark:text-gray-400 flex-shrink-0">
+                  <div className="flex flex-col items-start sm:items-end gap-0.5 text-xs sm:text-sm text-gray-600 dark:text-gray-400 shrink-0">
                     <div className="flex items-center gap-1.5">
                       <CalendarIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       <span>{exp.period}</span>
@@ -134,7 +134,7 @@ const Experience = () => {
                         viewport={{ once: true }}
                         className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300"
                       >
-                        <span className="text-blue-500 dark:text-blue-400 mt-0.5 flex-shrink-0">▹</span>
+                        <span className="text-blue-500 dark:text-blue-400 mt-0.5 shrink-0">▹</span>
                         <span>{item}</span>
                       </motion.li>
                     ))}
@@ -175,7 +175,7 @@ const Experience = () => {
                           viewport={{ once: true }}
                           className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/30 p-2.5 rounded-lg border border-gray-100 dark:border-gray-700"
                         >
-                          <CheckCircleIcon className="w-4 h-4 text-emerald-500 dark:text-emerald-400 mt-0.5 flex-shrink-0" />
+                          <CheckCircleIcon className="w-4 h-4 text-emerald-500 dark:text-emerald-400 mt-0.5 shrink-0" />
                           <span>{achievement}</span>
                         </motion.div>
                       ))}

@@ -73,7 +73,7 @@ const OAuthGoogleBlog = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="mt-8 flex items-center gap-3"
         >
-          <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+          <div className="w-12 h-12 bg-linear-to-r from-blue-500 to-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
             M
           </div>
           <div>
@@ -162,7 +162,7 @@ const OAuthGoogleBlog = () => {
               
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold flex-shrink-0">1</div>
+                  <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold shrink-0">1</div>
                   <div className="flex-1">
                     <p className="text-gray-700 dark:text-gray-300">
                       <span className="font-semibold text-gray-900 dark:text-white">User clicks "Sign in with Google"</span> - Client redirects to Google's authorization server
@@ -171,7 +171,7 @@ const OAuthGoogleBlog = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold flex-shrink-0">2</div>
+                  <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold shrink-0">2</div>
                   <div className="flex-1">
                     <p className="text-gray-700 dark:text-gray-300">
                       <span className="font-semibold text-gray-900 dark:text-white">Google authenticates user</span> - User logs into their Google account and grants permissions
@@ -180,7 +180,7 @@ const OAuthGoogleBlog = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold flex-shrink-0">3</div>
+                  <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold shrink-0">3</div>
                   <div className="flex-1">
                     <p className="text-gray-700 dark:text-gray-300">
                       <span className="font-semibold text-gray-900 dark:text-white">Authorization code returned</span> - Google redirects back to your app with a temporary code
@@ -189,7 +189,7 @@ const OAuthGoogleBlog = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold flex-shrink-0">4</div>
+                  <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold shrink-0">4</div>
                   <div className="flex-1">
                     <p className="text-gray-700 dark:text-gray-300">
                       <span className="font-semibold text-gray-900 dark:text-white">Server exchanges code for tokens</span> - Backend sends code + client secret to Google
@@ -198,7 +198,7 @@ const OAuthGoogleBlog = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold flex-shrink-0">5</div>
+                  <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold shrink-0">5</div>
                   <div className="flex-1">
                     <p className="text-gray-700 dark:text-gray-300">
                       <span className="font-semibold text-gray-900 dark:text-white">Access & Refresh tokens received</span> - Server can now access Google APIs on behalf of user
@@ -221,31 +221,31 @@ const OAuthGoogleBlog = () => {
               
               <ol className="space-y-4">
                 <li className="flex gap-3">
-                  <span className="w-5 h-5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
+                  <span className="w-5 h-5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-bold shrink-0">1</span>
                   <span className="text-gray-700 dark:text-gray-300">Go to <a href="#" className="text-blue-600 dark:text-blue-400 hover:underline">Google Cloud Console</a> and create a new project or select existing</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="w-5 h-5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
+                  <span className="w-5 h-5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-bold shrink-0">2</span>
                   <span className="text-gray-700 dark:text-gray-300">Navigate to "APIs & Services" → "OAuth consent screen"</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="w-5 h-5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
+                  <span className="w-5 h-5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-bold shrink-0">3</span>
                   <span className="text-gray-700 dark:text-gray-300">Choose "External" user type (for most applications)</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="w-5 h-5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">4</span>
+                  <span className="w-5 h-5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-bold shrink-0">4</span>
                   <span className="text-gray-700 dark:text-gray-300">Fill in app information (name, support email, etc.)</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="w-5 h-5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">5</span>
+                  <span className="w-5 h-5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-bold shrink-0">5</span>
                   <span className="text-gray-700 dark:text-gray-300">Add scopes: email, profile, openid (basic info)</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="w-5 h-5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">6</span>
+                  <span className="w-5 h-5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-bold shrink-0">6</span>
                   <span className="text-gray-700 dark:text-gray-300">Add test users (for development)</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="w-5 h-5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">7</span>
+                  <span className="w-5 h-5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-bold shrink-0">7</span>
                   <span className="text-gray-700 dark:text-gray-300">Go to "Credentials" → "Create Credentials" → "OAuth client ID"</span>
                 </li>
               </ol>

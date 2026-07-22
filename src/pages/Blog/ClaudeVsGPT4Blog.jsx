@@ -66,7 +66,7 @@ const ClaudeVsGPT4Blog = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="mt-8 flex items-center gap-3"
         >
-          <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+          <div className="w-12 h-12 bg-linear-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
             M
           </div>
           <div>
@@ -397,7 +397,7 @@ const ClaudeVsGPT4Blog = () => {
               developer's toolkit, each with its own superpowers."
             </blockquote>
 
-            <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-6 rounded-xl text-white mt-8">
+            <div className="bg-linear-to-r from-blue-500 to-purple-500 p-6 rounded-xl text-white mt-8">
               <h3 className="text-xl font-bold mb-2">Pro Tip</h3>
               <p className="text-white/90">
                 Use both! I often start with Claude for architecture discussions and planning, then 

@@ -73,7 +73,7 @@ const MongoDBOptimizationBlog = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="mt-8 flex items-center gap-3"
         >
-          <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+          <div className="w-12 h-12 bg-linear-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
             M
           </div>
           <div>
@@ -207,7 +207,7 @@ db.products.find({
                 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2 text-red-600">❌ Wrong Order</h4>
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">❌ Wrong Order</h4>
                     <div className="bg-gray-900 rounded p-3 overflow-x-auto">
                       <pre className="text-xs text-gray-300 font-mono">
                         <code>{`// Index created as:
@@ -226,7 +226,7 @@ db.products.find({
                   </div>
 
                   <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2 text-green-600">✅ ESR Compliant</h4>
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">✅ ESR Compliant</h4>
                     <div className="bg-gray-900 rounded p-3 overflow-x-auto">
                       <pre className="text-xs text-gray-300 font-mono">
                         <code>{`// Index created as:
@@ -502,7 +502,7 @@ db.system.profile.find({
 
             <div className="grid gap-3">
               <div className="flex items-start gap-3 p-3 bg-gray-100 dark:bg-gray-900 rounded-lg">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-semibold text-gray-900 dark:text-white">Index all query patterns</span>
                   <p className="text-sm text-gray-600 dark:text-gray-400">Use .explain() to verify each query uses an index</p>
@@ -510,7 +510,7 @@ db.system.profile.find({
               </div>
               
               <div className="flex items-start gap-3 p-3 bg-gray-100 dark:bg-gray-900 rounded-lg">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-semibold text-gray-900 dark:text-white">Limit returned fields</span>
                   <p className="text-sm text-gray-600 dark:text-gray-400">Use projection to return only needed fields</p>
@@ -518,7 +518,7 @@ db.system.profile.find({
               </div>
               
               <div className="flex items-start gap-3 p-3 bg-gray-100 dark:bg-gray-900 rounded-lg">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-semibold text-gray-900 dark:text-white">Use connection pooling</span>
                   <p className="text-sm text-gray-600 dark:text-gray-400">Configure maxPoolSize based on your workload</p>
@@ -526,7 +526,7 @@ db.system.profile.find({
               </div>
               
               <div className="flex items-start gap-3 p-3 bg-gray-100 dark:bg-gray-900 rounded-lg">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-semibold text-gray-900 dark:text-white">Monitor slow queries</span>
                   <p className="text-sm text-gray-600 dark:text-gray-400">Set up alerts for queries taking 100ms</p>
@@ -534,7 +534,7 @@ db.system.profile.find({
               </div>
               
               <div className="flex items-start gap-3 p-3 bg-gray-100 dark:bg-gray-900 rounded-lg">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-semibold text-gray-900 dark:text-white">Regular index review</span>
                   <p className="text-sm text-gray-600 dark:text-gray-400">Remove unused indexes, analyze index usage stats</p>
@@ -555,7 +555,7 @@ db.system.profile.find({
               database performance from "struggling under load" to "blazing fast at scale."
             </p>
             
-            <div className="bg-gradient-to-r from-green-500 to-teal-500 p-6 rounded-xl text-white mt-6">
+            <div className="bg-linear-to-r from-green-500 to-teal-500 p-6 rounded-xl text-white mt-6">
               <h3 className="text-xl font-bold mb-2">Quick Wins Summary</h3>
               <ul className="space-y-2 text-white/90">
                 <li>• ✓ Start with ESR-compound indexes on your slowest queries</li>
