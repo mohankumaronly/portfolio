@@ -5,8 +5,41 @@ import project2 from "../assets/images/project2.png";
 import project4 from "../assets/images/project4.png";
 import project5 from "../assets/images/project5.png";
 import project6 from "../assets/images/project6.png";
+import project7 from "../assets/images/project7.png";
 
 const projects = [
+  {
+    "id": 6,
+    "title": "My-Vault — Zero-Knowledge Password Manager",
+    "image": project7,
+    "desc": "A self-hosted, zero-knowledge password manager where the server never sees your master key or plaintext secrets. Every credential is encrypted in the browser using AES-256-GCM, and the backend only ever stores ciphertext, nonces, and a wrapped data-encryption key (DEK). The master key is your identity — there is no email, no account recovery, and no password reset by design. Built with React 19 and Express 5, backed by PostgreSQL via Prisma, and hardened with Argon2id key derivation, optimistic concurrency control, and HttpOnly session cookies.",
+    "features": [
+      "Zero-knowledge architecture — server never receives master key, KEK, or DEK",
+      "Master-key-only identity with no email and no account recovery",
+      "Client-side Argon2id KDF derives KEK and auth verifier in the browser",
+      "AES-256-GCM encryption for every credential bound with authenticated associated data (AAD)",
+      "Wrapped DEK cryptographically bound to the vault's public salt via AES-GCM AAD — envelopes cannot be swapped between vaults",
+      "Per-credential AAD binding vaultId + credentialId + version — ciphertext is non-portable",
+      "Optimistic concurrency control with recordVersion — stale writes return 409 STALE_RECORD",
+      "Session-scoped DEK held in browser memory only, auto-locks on inactivity",
+      "Session tokens stored as hashes server-side; raw token lives in HttpOnly SameSite=Strict cookie",
+      "CSRF token endpoint and protection for all state-changing requests",
+      "Rotatable wrapped DEK via PUT /vault/key-envelope",
+      "Audit logging for vault and credential operations",
+      "Rate limiting and Helmet security headers on the Express 5 API",
+      "Zod schema validation across all request payloads",
+      "Professional SaaS-style responsive React frontend with WebCrypto",
+      "Full Postman collection with pre-provisioned test vault for end-to-end API testing",
+      "Prisma ORM with Vault, Credential, Session, and AuditLog models on PostgreSQL (Neon-compatible)",
+      "Production-ready deployment with TLS termination and secure cookie configuration"
+    ],
+    "tech": "React 19, Vite, Tailwind CSS v4, React Router, WebCrypto API, hash-wasm, lucide-react, Node.js 24, Express 5, TypeScript, Zod, Helmet, express-rate-limit, PostgreSQL (Neon), Prisma ORM, Argon2id, AES-256-GCM, Docker, Vercel",
+    "github": "https://github.com/mohankumaronly/My-Vault",
+    "live": "https://rangervault.vercel.app/",
+    "backend": "",
+    "swagger": "",
+    "category": "Security & Zero-Knowledge Encryption"
+  },
   {
     id: 1,
     title: "Resume ATS Score Analyzer",
